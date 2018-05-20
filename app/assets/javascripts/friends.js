@@ -44,7 +44,7 @@ xhr.onload = function() {
 
         // Step 3
         var newString2 = string2.replace(/Thomas T/g,"Thomas and T"); 
-        console.log(newString2);    
+        // console.log(newString2);    
         $(".json-3").html("<span>" + newString2 + "</span> are also in Baby Step 3");
 
         // Step 4
