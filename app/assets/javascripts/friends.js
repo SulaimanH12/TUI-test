@@ -1,6 +1,11 @@
-var xhr = new XMLHttpRequest(); // Setup a request Object
-xhr.onload = function() {       // When loading
-    if(xhr.status === 200) {    // Checking the results status is GOOD
+// Setup a HTTPRequest
+var xhr = new XMLHttpRequest(); 
+
+// When HTTPTequest is loading
+xhr.onload = function() {
+
+    // Checking the request has succeeded. If yes the rest of JS code will run
+    if(xhr.status === 200) {    
         response = JSON.parse(xhr.responseText); 
 
         var string1 = "", 
@@ -8,7 +13,8 @@ xhr.onload = function() {       // When loading
             string3 = "",
             string4 = "";
 
-        for(var i = 0; i < response.friends.length ; i++ ) {    // Looping inside the JSON Object
+        // Looping inside the JSON Object
+        for(var i = 0; i < response.friends.length ; i++ ) {
             
             var babyStepValue = response.friends[i].babyStep;
         
@@ -31,12 +37,14 @@ xhr.onload = function() {       // When loading
         }
 
         // The friends names returned via the strings variables above are sorted below
+        // Assigning the JSON data to the HTML spans elements
 
         // Step 2
         $(".json-2").html("<span>" + string1 + "</span> is also in Baby Step 2");
 
         // Step 3
         var newString2 = string2.replace(/Thomas T/g,"Thomas and T"); 
+        console.log(newString2);    
         $(".json-3").html("<span>" + newString2 + "</span> are also in Baby Step 3");
 
         // Step 4
@@ -44,6 +52,8 @@ xhr.onload = function() {       // When loading
         $(".json-4").html("<span>" + newString3 + ",</span> and 1 other friend are also in Baby Step 4");
 
         // Step 5, 6 and 7
+
+        // Removing any excess friend names that are not using Step 5, 6, 7 via /g RegEx  
         var newString4 = string4
             .replace(/Joseph/g,"")
             .replace(/Lee/g,"")
